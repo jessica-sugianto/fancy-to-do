@@ -3,18 +3,18 @@ const Todo = require('../models').Todo
 class TodoControllers {
 
     static findAll(req, res) {
-        Todo.findAll()
+        Todo.findsAll()
             .then(todos => {
                 res.status(200).json(todos)
             })
             .catch(err => {
-                console.log(err)
-                res.status(500).json(err)
+                console.log(err.message)
+                res.status(500).json(err.message)
             })
     }
 
     static create(req, res) {
-        // console.log(req.body)
+        console.log(req.body)
         Todo.create({
                 title: req.body.title,
                 description: req.body.description,
