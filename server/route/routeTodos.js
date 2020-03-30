@@ -7,7 +7,7 @@ router.get('/', Controller.findAll)
 
 router.get('/:id', Controller.getOne)
 
-router.post('/add', Controller.create)
+router.post('/', Controller.create)
 
 router.put('/:id', Controller.update)
 

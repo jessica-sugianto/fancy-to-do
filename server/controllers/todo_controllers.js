@@ -3,7 +3,7 @@ const Todo = require('../models').Todo
 class TodoControllers {
 
     static findAll(req, res) {
-        Todo.findsAll()
+        Todo.findAll()
             .then(todos => {
                 res.status(200).json(todos)
             })
@@ -27,13 +27,7 @@ class TodoControllers {
             .catch(err => {
                 console.log(err.message)
                 if (err.name === 'SequelizeValidationError') {
-                    let message = []
-                    for (let i = 0; i < err.length; i++) {
-                        message.push({
-                            message: err[i].message
-                        })
-                    }
-                    res.status(400).json(message)
+                    res.status(400).json(err.message)
                 } else {
                     res.status(500).json(err)
                 }
