@@ -11,7 +11,7 @@ router.post('/add', Controller.create)
 
 router.put('/:id', Controller.update)
 
-// router.delete('/:id/delete', Controller.destroy)
+router.delete('/:id', Controller.destroy)
 
 
 module.exports = router

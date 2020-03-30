@@ -1,6 +1,6 @@
 const Express = require('express')
 const app = Express()
-const route = require('./route/routes.js')
+const route = require('./route')
 
 app.use(Express.urlencoded({ extended: false }))
 app.use(route)
