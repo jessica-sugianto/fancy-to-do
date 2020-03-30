@@ -5,11 +5,13 @@ const Controller = require('../controllers/todo_controllers.js')
 
 router.get('/', Controller.findAll)
 
+router.get('/:id', Controller.getOne)
+
 router.post('/add', Controller.create)
 
-router.put('/:id/edit', Controller.update)
+router.put('/:id', Controller.update)
 
-router.delete('/:id/delete', Controller.destroy)
+// router.delete('/:id/delete', Controller.destroy)
 
 
 module.exports = router
