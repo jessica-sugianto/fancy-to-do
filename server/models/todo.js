@@ -40,6 +40,9 @@ module.exports = (sequelize, DataTypes) => {
                 }
             }
         },
+        UserId: {
+            type: Sequelize.INTEGER
+        }
     }, { sequelize })
 
     Todo.associate = function(models) {
