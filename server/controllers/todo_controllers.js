@@ -41,7 +41,13 @@ class TodoControllers {
     }
     static getOne(req, res) {
         // console.log(req.params.id)
-        Todo.findByPk(req.params.id)
+        Todo.findOne({
+                include: User,
+                where: {
+                    id: req.params.id,
+                    UserId: req.UserId
+                }
+            })
             .then(todo => {
                 if (todo) {
                     res.status(200).json(todo)
@@ -59,7 +65,12 @@ class TodoControllers {
 
     static update(req, res) {
         console.log(req.body)
-        Todo.findByPk(req.params.id)
+        Todo.findOne({
+                where: {
+                    id: req.params.id,
+                    UserId: req.UserId
+                }
+            })
             .then(todo => {
                 if (todo) {
                     return Todo.update({
@@ -79,7 +90,13 @@ class TodoControllers {
                 }
             })
             .then(todo => {
-                return Todo.findByPk(req.params.id)
+                return Todo.findOne({
+                    include: User,
+                    where: {
+                        id: req.params.id,
+                        UserId: req.UserId
+                    }
+                })
             })
             .then(todo => {
                 res.status(200).json(todo)
@@ -96,7 +113,12 @@ class TodoControllers {
 
     static destroy(req, res) {
         let todoDelete = null
-        Todo.findByPk(req.params.id)
+        Todo.findOne({
+                where: {
+                    id: req.params.id,
+                    UserId: req.UserId
+                }
+            })
             .then(todo => {
                 if (todo) {
                     todoDelete = todo
