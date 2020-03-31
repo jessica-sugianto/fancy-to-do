@@ -15,7 +15,9 @@ class TodoControllers {
             })
             .catch(err => {
                 console.log(err.message)
-                res.status(500).json(err.message)
+                res.status(500).json({
+                    message: 'internal server error'
+                })
             })
     }
 
@@ -35,7 +37,9 @@ class TodoControllers {
                 if (err.message) {
                     res.status(400).json(err.message)
                 } else {
-                    res.status(500).json(err)
+                    res.status(500).json({
+                        message: 'internal server error'
+                    })
                 }
             })
     }
@@ -44,8 +48,7 @@ class TodoControllers {
         Todo.findOne({
                 include: User,
                 where: {
-                    id: req.params.id,
-                    UserId: req.UserId
+                    id: req.params.id
                 }
             })
             .then(todo => {
@@ -59,7 +62,9 @@ class TodoControllers {
             })
             .catch(err => {
                 console.log(err)
-                res.status(500).json(err)
+                res.status(500).json({
+                    message: 'internal server error'
+                })
             })
     }
 
@@ -93,8 +98,7 @@ class TodoControllers {
                 return Todo.findOne({
                     include: User,
                     where: {
-                        id: req.params.id,
-                        UserId: req.UserId
+                        id: req.params.id
                     }
                 })
             })
@@ -106,7 +110,9 @@ class TodoControllers {
                 if (err.message) {
                     res.status(400).json(err.message)
                 } else {
-                    res.status(500).json(err)
+                    res.status(500).json({
+                        message: 'internal server error'
+                    })
                 }
             })
     }
@@ -115,8 +121,7 @@ class TodoControllers {
         let todoDelete = null
         Todo.findOne({
                 where: {
-                    id: req.params.id,
-                    UserId: req.UserId
+                    id: req.params.id
                 }
             })
             .then(todo => {
@@ -138,7 +143,9 @@ class TodoControllers {
             })
             .catch(err => {
                 console.log(err)
-                res.status(500).json(err)
+                res.status(500).json({
+                    message: 'internal server error'
+                })
             })
     }
 }
