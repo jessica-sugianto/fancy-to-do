@@ -1,4 +1,6 @@
 const User = require('../models').User
+const jwt = require('jsonwebtoken')
+const Password = require('../helpers/password')
 
 class UserController {
     static register(req, res) {
@@ -8,7 +10,11 @@ class UserController {
                 role: 'user'
             })
             .then(user => {
-                res.status(200).json(user)
+                const token = jwt.sign({
+                    userId: user.id,
+                    username: user.username
+                }, 'jessica-sugianto')
+                res.status(200).json({ token })
             })
             .catch(err => {
                 if (err.message) {
@@ -16,6 +22,37 @@ class UserController {
                 } else {
                     res.status(500).json(err)
                 }
+            })
+    }
+
+    static login(req, res) {
+        User.findOne({
+                where: {
+                    username: req.body.username
+                }
+            })
+            .then(user => {
+                if (!user) {
+                    res.status(400).json({
+                        message: 'Username / Password salah'
+                    })
+                } else {
+                    if (!Password.checkPassword(req.body.password, user.password)) {
+                        res.status(400).json({
+                            message: 'Username / Password salah'
+                        })
+                    } else {
+                        const token = jwt.sign({
+                                userId: user.id,
+                                username: user.username
+                            }, 'jessica-sugianto')
+                            // req.headers['token'] = token
+                        res.status(200).json({ token })
+                    }
+                }
+            })
+            .catch(err => {
+                res.status(500).json(err)
             })
     }
 }
