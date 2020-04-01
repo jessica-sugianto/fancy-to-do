@@ -13,16 +13,21 @@ router.get('/:id', Authentication, Authorization, Controller.getOne)
 
 router.post('/', Authentication, Controller.create)
 
-router.get('/whatsaap/:phone_number', (req, res) => {
-    const phone_number = req.params.phone_number
+router.get('/google/:search', (req, res) => {
+    const search = req.params.search
     axios({
-        method: 'post',
-        url: 'https://eu11.chat-api.com/instance112338/',
-        data: {
-            "phone": phone_number,
-            "body": 'testing 3rd API'
-        }
-    })
+            method: 'get',
+            url: `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_SEARCH}&cx=013133766359376989566:ftzqfhbtzlw&q=${search}`
+        })
+        .then((result) => {
+            console.log(result)
+            res.status(200).json(result.data)
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: err
+            })
+        })
 })
 
 router.put('/:id', Authentication, Authorization, Controller.update)
