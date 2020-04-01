@@ -26,7 +26,7 @@ class UserController {
     }
 
     static login(req, res) {
-        User.findOnes({
+        User.findOne({
                 where: {
                     username: req.body.username
                 }

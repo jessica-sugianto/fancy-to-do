@@ -7,12 +7,30 @@
     </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="./assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
+    <nav class="navbar navbar-dark bg-primary">
+        <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+                <a class="nav-link" id="aLogin">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="aRegister">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="aTodo">Todo</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="alert alert-danger" role="alert" id="error">
+    </div>
     <div class="container-lg" id="register">
-        <h1> Register </h1>
-        <form>
+        <div id="header">
+            <h1> Register </h1>
+        </div>
+        <form id="formRegister">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Username">
@@ -21,12 +39,14 @@
                 <label for="password">password</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary"> Regist </button>
         </form>
     </div>
     <div class="container-lg" id="sign_in">
-        <h1> Sign In </h1>
-        <form>
+        <div id="header">
+            <h1> Sign In </h1>
+        </div>
+        <form id="formLogin">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Username">
@@ -35,13 +55,15 @@
                 <label for="password">password</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary"> Login </button>
         </form>
     </div>
     <div class="container-lg" id="todo">
-        <h1> To Do List</h1>
-        <a id="createTodo"> Create New To Do </a>
-        <table class="table">
+        <div id="header">
+            <h1> To Do List</h1>
+            <a id="createTodo"> Create New To Do </a>
+        </div><br>
+        <table class="table" id="todo_list">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col"> Title </th>
@@ -55,21 +77,47 @@
             </tbody>
         </table>
     </div>
-    <div class="container-lg" id="sign_in">
-        <h1> Sign In </h1>
-        <form>
+    <div class="container-lg" id="add_todo">
+        <div id="header">
+            <h1> Add To Do </h1>
+        </div>
+        <form id="formAddTodo">
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Title">
             </div>
             <div class="form-group">
-                <label for="password">password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" name="description" placeholder="Description">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group">
+                <label for="description">Due Date</label>
+                <input type="date" class="form-control" id="due_date" name="due_date" placeholder="2020-04-01">
+            </div>
+            <button type="submit" class="btn btn-primary"> Add </button>
         </form>
     </div>
-    <script src="./jquery/main.js"></script>
+    <div class="container-lg" id="edit_todo">
+        <div id="header">
+            <h1> Edit To Do </h1>
+        </div>
+        <form id="formEditTodo">
+            <div class="form-group" id="title">
+                <label for="title">Title</label>
+            </div>
+            <div class="form-group" id="description">
+                <label for="description">Description</label>
+            </div>
+            <div class="form-group" id="due_date">
+                <label for="description">Due Date</label>
+            </div>
+            <div class="form-group" id="status">
+                <label for="status">Status</label>
+            </div>
+            <button type="submit" class="btn btn-primary"> Add </button>
+        </form>
+    </div>
+    <script src="./asset/jquery/main.js"></script>
 </body>
 
 </html>
