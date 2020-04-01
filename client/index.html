@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Fancy Todo
+    </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container-lg" id="register">
+        <h1> Register </h1>
+        <form>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label for="password">password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class="container-lg" id="sign_in">
+        <h1> Sign In </h1>
+        <form>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label for="password">password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class="container-lg" id="todo">
+        <h1> To Do List</h1>
+        <a id="createTodo"> Create New To Do </a>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col"> Title </th>
+                    <th scope="col"> Description </th>
+                    <th scope="col"> Due Date </th>
+                    <th scope="col"> Status </th>
+                    <th scope="col"> Action </th>
+                </tr>
+            </thead>
+            <tbody id="todo_list">
+            </tbody>
+        </table>
+    </div>
+    <div class="container-lg" id="sign_in">
+        <h1> Sign In </h1>
+        <form>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label for="password">password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script src="./jquery/main.js"></script>
+</body>
+
+</html>
