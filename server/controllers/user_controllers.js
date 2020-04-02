@@ -10,11 +10,7 @@ class UserController {
                 role: 'user'
             })
             .then(user => {
-                const token = jwt.sign({
-                    userId: user.id,
-                    username: user.username
-                }, 'jessica-sugianto')
-                res.status(200).json({ token })
+                res.status(200).json(user)
             })
             .catch(err => {
                 if (err.message) {
@@ -26,6 +22,7 @@ class UserController {
     }
 
     static login(req, res) {
+        // console.log(req.body)
         User.findOne({
                 where: {
                     username: req.body.username

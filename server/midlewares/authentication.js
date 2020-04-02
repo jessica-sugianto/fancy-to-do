@@ -4,6 +4,7 @@ function autehtication(req, res, next) {
     try {
         const token = req.headers.token
         if (!token) {
+            console.log(token)
             res.status(404).json({
                 message: 'Token not found'
             })
