@@ -1,3 +1,15 @@
 #header {
     text-align: center;
 }
+
+a:link {
+    color: slategrey;
+}
+
+a:visited {
+    color: slategrey;
+}
+
+a:active {
+    color: rgb(12, 17, 22);
+}
