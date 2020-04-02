@@ -25,7 +25,7 @@ class TodoControllers {
         Todo.create({
                 title: req.body.title,
                 description: req.body.description,
-                status: Number(req.body.status),
+                status: 0,
                 due_date: new Date(req.body.due_date),
                 UserId: req.UserId
             })
