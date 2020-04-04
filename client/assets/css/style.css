@@ -3,13 +3,13 @@
 }
 
 a:link {
-    color: slategrey;
+    color: midnightblue;
 }
 
 a:visited {
-    color: slategrey;
+    color: midnightblue;
 }
 
 a:active {
-    color: rgb(12, 17, 22);
+    color: midnightblue;
 }

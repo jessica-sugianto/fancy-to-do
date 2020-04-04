@@ -33,6 +33,14 @@ module.exports = (sequelize, DataTypes) => {
                     msg: 'Role tidak boleh kosong'
                 }
             }
+        },
+        email: {
+            type: Sequelize.STRING,
+            validate: {
+                notEmpty: {
+                    msg: 'Email tidak boleh kosong'
+                }
+            }
         }
     }, {
         hooks: {

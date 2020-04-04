@@ -21,7 +21,7 @@ router.get('/google/:search', (req, res) => {
         })
         .then((result) => {
             console.log(result)
-            res.status(200).json(result.data)
+            res.status(200).json(result.data.items)
         })
         .catch(err => {
             res.status(500).json({

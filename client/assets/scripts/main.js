@@ -1,6 +1,5 @@
 $(document).ready(function() {
     if (localStorage.getItem('token')) {
-        showTodo()
         $('#sign_in').hide()
         $('#register').hide()
         $('#todo').show()
@@ -9,6 +8,7 @@ $(document).ready(function() {
         $('#aLogin').hide()
         $('#aRegister').hide()
         $('#aTodo').show()
+        $('#aLogout').show()
     } else {
         $('#sign_in').show()
         $('#register').hide()
@@ -18,6 +18,7 @@ $(document).ready(function() {
         $('#aLogin').show()
         $('#aRegister').show()
         $('#aTodo').hide()
+        $('#aLogout').hide()
     }
 
 
@@ -74,6 +75,7 @@ $(document).ready(function() {
                 $('#aLogin').hide()
                 $('#aRegister').hide()
                 $('#aTodo').show()
+                $('#aLogout').show()
 
                 showTodo()
 
@@ -177,6 +179,71 @@ $(document).ready(function() {
     })
 })
 
+function onSignIn(googleUser) {
+    // var profile = googleUser.getBasicProfile();
+    // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    // console.log('Name: ' + profile.getName());
+    // console.log('Image URL: ' + profile.getImageUrl());
+    // console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    const id_token = googleUser.getAuthResponse().id_token
+    $.ajax({
+            method: 'POST',
+            url: 'http://localhost:3000/users/OAuth',
+            data: {
+                token: id_token
+            }
+        })
+        .done(result => {
+
+            console.log(result)
+
+            $('#aLogin').hide()
+            $('#aRegister').hide()
+            $('#aTodo').show()
+            $('#aLogout').show()
+
+            localStorage.setItem('token', result.token)
+
+            showTodo()
+
+            console.log(result)
+        })
+        .fail(err => {
+            $('#error').append(`<div class="alert alert-danger" role="alert"> Error register dari server: ${err.responseText} </div>`)
+        })
+
+}
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    if (auth2) {
+        $('#sign_in').show()
+        $('#register').hide()
+        $('#todo').hide()
+        $('#add_todo').hide()
+        $('#edit_todo').hide()
+        $('#aLogin').show()
+        $('#aRegister').show()
+        $('#aTodo').hide()
+        $('#aLogout').hide()
+        auth2.signOut().then(function() {
+            console.log('User signed out.');
+        });
+        localStorage.removeItem('token')
+    } else {
+        $('#sign_in').show()
+        $('#register').hide()
+        $('#todo').hide()
+        $('#add_todo').hide()
+        $('#edit_todo').hide()
+        $('#aLogin').show()
+        $('#aRegister').show()
+        $('#aTodo').hide()
+        $('#aLogout').hide()
+        localStorage.removeItem('token')
+    }
+}
+
 //Todo List
 function showTodo() {
     $('#sign_in').hide()
@@ -211,14 +278,15 @@ function showTodo() {
                     <td> ${result[i].due_date} </td>
                     <td> ${status} </td>
                     <td> <button type='button' class="btn btn-secondary" onClick='editTodo(${result[i].id})'> Update </button> | <button type='button' class="btn btn-danger" onClick=deleteTodo(${result[i].id})> Delete </button> </td>
-                </tr>`
+                </tr>
+                `
             }
 
             $('#todo_list').append(data)
         })
         .fail(err => {
             console.log(err)
-            $('#error').append(`<div class="alert alert-danger" role="alert"> Error mengambik data todo dari server: ${err.responseText} </div>`)
+            $('#error').append(`<div class="alert alert-danger" role="alert"> Error mengambil data todo dari server: ${err.responseText} </div>`)
         })
 }
 

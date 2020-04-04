@@ -399,3 +399,27 @@ Response (500)
         at D:\Haktiv8\Phase 2\Week 1\fancy-to-do\server\node_modules\express\lib\router\index.js:284:7
         at Function.process_params (D:\Haktiv8\Phase 2\Week 1\fancy-to-do\server\node_modules\express\lib\router\index.js:335:12)
         at next (D:\Haktiv8\Phase 2\Week 1\fancy-to-do\server\node_modules\express\lib\router\index.js:275:10)
+
+### POST /users/OAuth
+
+> Masuk ke dalam aplikasi melalui google
+
+Request Header
+
+    not needed
+
+Request Body
+
+    {
+        token: id_token
+    }
+
+Response (200)
+
+    {token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZ…xNzV9.rnQY1Lx4zX1WeuBTn87dukZupTcrJd4IU0KFwF4lZu4"}
+
+Response (500)
+
+    TypeError: User.findOnes is not a function
+        at D:\Haktiv8\Phase 2\Week 1\fancy-to-do\server\controllers\user_controllers.js:72:29 
+        at processTicksAndRejections (internal/process/task_queues.js:94:5)

@@ -5,6 +5,7 @@
     <title>
         Fancy Todo
     </title>
+    <meta name="google-signin-client_id" content="159074088306-973bj0tlrjklqn5f8oktrgf47533oios.apps.googleusercontent.com">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="./assets/css/style.css" rel="stylesheet">
@@ -21,6 +22,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="aTodo" href="#" onclick="todo()">Todo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="aLogout" href="#" onclick="signOut()">Logout</a>
             </li>
         </ul>
     </nav>
@@ -59,6 +63,11 @@
             </div>
             <button type="submit" class="btn btn-primary"> Login </button>
         </form>
+        <center>
+            <h5> Sign In with Google </h5>
+            <br>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        </center>
     </div>
     <div class="container-lg" id="todo">
         <div id="header">
@@ -119,6 +128,7 @@
             <button type="submit" class="btn btn-primary"> Edit </button>
         </form>
     </div>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="./assets/scripts/main.js"></script>
 </body>
 
